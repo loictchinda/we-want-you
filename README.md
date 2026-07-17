@@ -1,55 +1,51 @@
-# we-want-you
+# Test technique — Alternance Développeur Full-Stack
 
-## Assignment
+Bienvenue ! Ce test a pour objectif de comprendre **comment tu raisonnes et comment tu structures ton code**, pas de te piéger. Il n'y a pas de solution unique attendue.
 
-You are asked to build a simple time-spent logging system from scratch, with following specifications.
+## Choix de la stack
 
-## Guidelines
+Tu choisis **l'une** des deux stacks suivantes (celle où tu es le plus à l'aise) :
 
-1. Fork this repository
-1. Take few seconds to draft what you want to do
-1. Develop your app following your own ideas
-1. Push your changes to your git fork
-1. Create a pull-request to our repository
+| Option | Backend | Frontend |
+|--------|---------|----------|
+| **A** | C# / .NET (Web API) | React |
+| **B** | Node.js (Express, Fastify ou NestJS) | Vue 3 ou Nuxt |
 
-If you have any questions, or consideration, you can ask them on Slack
+> Indique ton choix dans le fichier `NOTES.md` (voir plus bas).
 
-## FAQ
+## Le sujet
 
-* You just have to input time spent information, you don't have to track the time
-* You are not here to do some graphic design, it can be ugly, it has only to be functional
-* You can add any framework, library or plugin you'd like
-* DO wathever you want, that is exactly what we are looking for
-* Make sure the application works out-of-the box once you are done
-* Add a short description on how to setup and run your program in the Setup section above (have in mind that we do not have anything on our computers)
-* Check the finished features in the `Specifications` and `Nice to have` section by putting an 'X' ([X]) in between the brackets
-* Be focus on quality prior that quantity, we prefer to see some great stuffs than a mass of garbage
+Le sujet complet est décrit dans [`SUJET.md`](./SUJET.md) : une **mini plateforme d'enchères** avec une API et une petite interface.
 
-## Specifications
+## Ce qu'on attend de toi
 
-### User
+- ⏱️ **Temps indicatif : 4 à 6 heures.** Il n'est pas nécessaire de tout finir. Il vaut mieux une partie propre et réfléchie qu'un projet complet mais bâclé.
+- 🧠 **Ton raisonnement compte plus que le résultat.** Documente tes choix, tes hypothèses et ce que tu ferais avec plus de temps dans `NOTES.md`.
+- 🧪 Quelques **tests** sur la logique métier principale sont un vrai plus (pas besoin de couverture complète).
+- 🎨 Le design du frontend n'est **pas évalué**. Une interface fonctionnelle et lisible suffit.
 
-* [ ] A user can login with a valid username and password through a login screen
-* [ ] A user can add some time-spent information in a form
-* [ ] A user can get an overview of all time he has spent by projects
+## Contraintes techniques
 
-### Time entry
+- Pas de base de données obligatoire : un stockage **en mémoire** ou un fichier JSON suffit (les données de départ sont dans [`data/annonces.json`](./data/annonces.json)).
+- Le backend expose une **API REST** consommée par le frontend.
+- Le code doit se lancer facilement : documente les commandes dans `NOTES.md`.
 
-* [ ] A time spent record had a title and a description
-* [ ] A time spent record is related to a project
-* [ ] We should be able to see time spent per project
+## Livrables
 
-### Projects
+1. Ton code dans les dossiers `backend/` et `frontend/` (ou une autre organisation si tu la justifies).
+2. Un fichier **`NOTES.md`** à la racine contenant :
+   - la stack choisie et les commandes pour lancer le projet ;
+   - tes choix techniques et hypothèses ;
+   - ce que tu n'as pas eu le temps de faire et comment tu l'aurais fait ;
+   - les difficultés rencontrées.
+3. Un historique Git avec des **commits réguliers et des messages clairs** (on regarde comment tu avances, pas seulement le résultat final).
 
-* [ ] A user can add a project
+## Rendu
 
-## Nice to have
+- Pousse ton travail sur un fork ou un repo privé et invite-nous, **ou** envoie une archive `.zip` incluant le dossier `.git`.
 
-If you are an incredible dev (we know you are), here is some optional specs that can be added.
+## Une IA, c'est autorisé ?
 
-* [ ] Input validation on the login form.
-* [ ] Input validation on the timing form.
-* [ ] Ability to edit/remove records
-* [ ] A user with admin role that can add/remove users
-* [ ] Ability to start a timer and track time with it
-* [ ] Whatever you find revelant ;-)
+Oui, les outils d'assistance (Copilot, ChatGPT, Claude...) sont autorisés — ils font partie du métier. En revanche, **tu dois être capable d'expliquer chaque ligne de ton code** : le test sera suivi d'un débrief oral où l'on te demandera de justifier tes choix et de faire évoluer ton code en live.
+
+Bon courage ! 🚀
