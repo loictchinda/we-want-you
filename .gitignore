@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+# .NET
+bin/
+obj/
+*.user
+# Builds
+dist/
+build/
+.nuxt/
+.output/
+# Env & IDE
+.env
+.env.*
+.vs/
+.idea/
+*.suo
+.DS_Store

@@ -8,8 +8,8 @@ Tu choisis **l'une** des deux stacks suivantes (celle où tu es le plus à l'ais
 
 | Option | Backend | Frontend |
 |--------|---------|----------|
-| **A** | C# / .NET (Web API) | React |
-| **B** | Node.js (Express, Fastify ou NestJS) | Vue 3 ou Nuxt |
+| **A** | C# / .NET (Web API) | React Typescript |
+| **B** | Node.js (Framework au choix) | Vue 3 ou Nuxt Typescript |
 
 > Indique ton choix dans le fichier `NOTES.md` (voir plus bas).
 
