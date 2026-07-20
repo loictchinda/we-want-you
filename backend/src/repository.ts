@@ -26,3 +26,17 @@ export function listerAnnonces(): Annonce[] {
 export function trouverAnnonce(id: string): Annonce | undefined {
     return annonces.find(a => a.id === id);
 }
+
+import { Enchere } from './types';
+
+/**
+ * Ajoute une enchère à une annonce.
+ * Retourne l'annonce mise à jour, ou undefined si elle n'existe pas.
+ */
+export function ajouterEnchere(id: string, enchere: Enchere): Annonce | undefined {
+    const annonce = annonces.find(a => a.id === id);
+    if (!annonce) return undefined;
+
+    annonce.encheres.push(enchere);
+    return annonce;
+}

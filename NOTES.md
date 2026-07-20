@@ -42,6 +42,11 @@ Je traite les **règles métier comme le cœur du test** (le sujet le souligne l
 - **404 pour une annonce introuvable** : la ressource n'existe pas, indépendamment de toute logique métier.
 - **Tri de l'historique** : effectué sur une copie du tableau, pour ne pas réordonner les données du dépôt à chaque lecture.
 
+- **Codes HTTP différenciés** : 400 pour une requête malformée (pseudo vide, montant non numérique), 409 pour un conflit d'état (annonce terminée), 422 pour une règle métier non satisfaite sur une requête pourtant bien formée, 404 pour une ressource inexistante. Un 400 uniforme aurait été plus simple mais aurait empêché le client de distinguer « corrige ta saisie » de « trop tard » ou de « propose plus cher ».
+- **`MONTANT_TROP_BAS` et `PAS_ENCHERE_NON_RESPECTE` sont distincts** bien que la seconde règle englobe la première, afin de renvoyer un message actionnable. Le champ `details.montantMinimum` permet au frontend de pré-remplir le formulaire.
+- **Validation dans une fonction pure** (`domain/enchere.ts`), sans dépendance à Express ni à l'horloge (l'instant est injecté) : la logique métier est testable sans démarrer de serveur.
+- **Montant strictement typé `number`** : un montant transmis en chaîne est refusé, pour éviter les coercitions silencieuses.
+
 ## Ce que je n'ai pas eu le temps de faire (et comment je l'aurais fait)
 
 *(à compléter)*
