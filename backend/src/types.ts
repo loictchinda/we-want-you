@@ -30,3 +30,15 @@ export interface AnnoncePublique {
     nombreEncheres: number;
     statut: StatutAnnonce;
 }
+
+/** Détail d'une annonce : la vue publique enrichie de l'historique. */
+export interface AnnonceDetail extends AnnoncePublique {
+    encheres: Enchere[];   // de la plus récente à la plus ancienne
+}
+
+/** Format unique des réponses d'erreur de l'API. */
+export interface ErreurApi {
+    code: string;          // identifiant stable, exploitable par le client
+    message: string;       // message lisible par un humain
+    details?: unknown;     // contexte optionnel (valeurs attendues, etc.)
+}

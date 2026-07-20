@@ -32,3 +32,20 @@ export function versAnnoncePublique(annonce: Annonce, maintenant: Date = new Dat
         statut: statut(annonce, maintenant),
     };
 }
+
+import { AnnonceDetail } from '../types';
+
+/**
+ * Vue détaillée : annonce publique + historique des enchères,
+ * trié de la plus récente à la plus ancienne (demandé par le sujet).
+ */
+export function versAnnonceDetail(annonce: Annonce, maintenant: Date = new Date()): AnnonceDetail {
+    const encheresTriees = [...annonce.encheres].sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    return {
+        ...versAnnoncePublique(annonce, maintenant),
+        encheres: encheresTriees,
+    };
+}

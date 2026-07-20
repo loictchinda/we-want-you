@@ -38,7 +38,9 @@ Je traite les **règles métier comme le cœur du test** (le sujet le souligne l
 
 ### Hypothèses posées
 
-*(à compléter au fil du développement)*
+- **Format d'erreur unique** : toutes les erreurs renvoient `{ code, message, details? }`. Le `code` est un identifiant stable destiné au client (ex. `MONTANT_TROP_BAS`), le `message` est destiné à l'affichage. Le frontend ne doit jamais avoir à parser un message pour décider de son comportement.
+- **404 pour une annonce introuvable** : la ressource n'existe pas, indépendamment de toute logique métier.
+- **Tri de l'historique** : effectué sur une copie du tableau, pour ne pas réordonner les données du dépôt à chaque lecture.
 
 ## Ce que je n'ai pas eu le temps de faire (et comment je l'aurais fait)
 
