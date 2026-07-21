@@ -6,16 +6,28 @@ const BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
  * Erreur métier renvoyée par l'API.
  * On conserve le code et les details pour que l'appelant puisse réagir
  * autrement que par un simple message.
+ *
+ * Les champs sont déclarés puis assignés explicitement : le projet active
+ * `erasableSyntaxOnly`, qui interdit les paramètres-propriétés du constructeur
+ * (syntaxe non effaçable, donc non exécutable par un moteur qui se contente
+ * de retirer les annotations de type).
  */
 export class ApiError extends Error {
+    readonly code: string;
+    readonly statut: number;
+    readonly details?: Record<string, unknown>;
+
     constructor(
-        public readonly code: string,
+        code: string,
         message: string,
-        public readonly statut: number,
-        public readonly details?: Record<string, unknown>
+        statut: number,
+        details?: Record<string, unknown>
     ) {
         super(message);
         this.name = 'ApiError';
+        this.code = code;
+        this.statut = statut;
+        this.details = details;
     }
 }
 
