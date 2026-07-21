@@ -32,6 +32,12 @@ npm test
 
 ## Choix techniques et hypothèses
 
+### Tests
+
+17 tests sur `validerEnchere`, exécutables via `npm test` (runner natif `node:test`, aucune dépendance ajoutée). Ils couvrent les cinq règles de refus, les cas limites (montant exactement au minimum, instant exact de la date de fin) et l'ordre de priorité des vérifications.
+
+Ces tests ne démarrent ni serveur ni base : la validation étant une fonction pure recevant l'instant en paramètre, elle se teste directement. C'est la raison principale de l'avoir extraite des routes.
+
 ### Approche générale
 
 Je traite les **règles métier comme le cœur du test** (le sujet le souligne lui-même). Elles sont isolées dans une fonction pure, testable sans serveur ni HTTP, et réutilisée par le contrôleur. Cette séparation permet de tester la logique d'enchère indépendamment du transport.
