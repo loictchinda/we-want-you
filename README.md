@@ -1,51 +1,49 @@
-# Test technique — Alternance Développeur Full-Stack
+# Mini plateforme d'enchères — rendu de Loïc Tchinda
 
-Bienvenue ! Ce test a pour objectif de comprendre **comment tu raisonnes et comment tu structures ton code**, pas de te piéger. Il n'y a pas de solution unique attendue.
+Prototype réalisé pour le test technique. Stack **Node.js + Express + TypeScript** (API) et **Vue 3 + TypeScript** (interface). Données en mémoire, chargées depuis `data/annonces.json`.
 
-## Choix de la stack
+> Les choix techniques, les réponses aux questions ouvertes et les limites sont détaillés dans **[NOTES.md](./NOTES.md)**.
 
-Tu choisis **l'une** des deux stacks suivantes (celle où tu es le plus à l'aise) :
+## Lancer le projet
 
-| Option | Backend | Frontend |
-|--------|---------|----------|
-| **A** | C# / .NET (Web API) | React Typescript |
-| **B** | Node.js (Framework au choix) | Vue 3 ou Nuxt Typescript |
+Deux terminaux, l'API et l'interface tournent en parallèle.
 
-> Indique ton choix dans le fichier `NOTES.md` (voir plus bas).
+```bash
+# 1. API — http://localhost:3000
+cd backend
+npm install
+npm run dev
 
-## Le sujet
+# 2. Interface — http://localhost:5173
+cd frontend
+npm install
+npm run dev
+```
 
-Le sujet complet est décrit dans [`SUJET.md`](./SUJET.md) : une **mini plateforme d'enchères** avec une API et une petite interface.
+## Tests
 
-## Ce qu'on attend de toi
+```bash
+cd backend
+npm test
+```
 
-- ⏱️ **Temps indicatif : 4 à 6 heures.** Il n'est pas nécessaire de tout finir. Il vaut mieux une partie propre et réfléchie qu'un projet complet mais bâclé.
-- 🧠 **Ton raisonnement compte plus que le résultat.** Documente tes choix, tes hypothèses et ce que tu ferais avec plus de temps dans `NOTES.md`.
-- 🧪 Quelques **tests** sur la logique métier principale sont un vrai plus (pas besoin de couverture complète).
-- 🎨 Le design du frontend n'est **pas évalué**. Une interface fonctionnelle et lisible suffit.
+17 tests sur la logique métier de validation d'enchère (runner natif `node:test`).
 
-## Contraintes techniques
+## Endpoints
 
-- Pas de base de données obligatoire : un stockage **en mémoire** ou un fichier JSON suffit (les données de départ sont dans [`data/annonces.json`](./data/annonces.json)).
-- Le backend expose une **API REST** consommée par le frontend.
-- Le code doit se lancer facilement : documente les commandes dans `NOTES.md`.
+| Méthode | Route | Description |
+|---|---|---|
+| GET | `/api/annonces` | Liste : meilleure enchère et statut calculés |
+| GET | `/api/annonces/:id` | Détail + historique (plus récent en premier) |
+| POST | `/api/annonces/:id/encheres` | Placer une enchère — corps `{ pseudo, montant }` |
 
-## Livrables
+**Codes d'erreur :** 400 (requête malformée) · 404 (annonce inexistante) · 409 (annonce terminée) · 422 (règle métier non satisfaite). Chaque erreur renvoie `{ code, message, details? }`.
 
-1. Ton code dans les dossiers `backend/` et `frontend/` (ou une autre organisation si tu la justifies).
-2. Un fichier **`NOTES.md`** à la racine contenant :
-   - la stack choisie et les commandes pour lancer le projet ;
-   - tes choix techniques et hypothèses ;
-   - ce que tu n'as pas eu le temps de faire et comment tu l'aurais fait ;
-   - les difficultés rencontrées.
-3. Un historique Git avec des **commits réguliers et des messages clairs** (on regarde comment tu avances, pas seulement le résultat final).
+---
 
-## Rendu
+<details>
+<summary>Énoncé original du test</summary>
 
-- Pousse ton travail sur un fork ou un repo privé et invite-nous, **ou** envoie une archive `.zip` incluant le dossier `.git`.
+Voir [SUJET.md](./SUJET.md).
 
-## Une IA, c'est autorisé ?
-
-Oui, les outils d'assistance (Copilot, ChatGPT, Claude...) sont autorisés — ils font partie du métier. En revanche, **tu dois être capable d'expliquer chaque ligne de ton code** : le test sera suivi d'un débrief oral où l'on te demandera de justifier tes choix et de faire évoluer ton code en live.
-
-Bon courage ! 🚀
+</details>
